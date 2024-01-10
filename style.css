@@ -1,0 +1,76 @@
+
+.search-container {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#search {
+    margin: 0 auto;
+    display: inline-block;
+}
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+}
+.search-button {
+    padding: 10px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.search-button:hover {
+    background-color: #555;
+}
+/* Navigation Bar */
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Navigation Links */
+.navbar a {
+    float: left;
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background-color: #555;
+}
+
+/* Active Link */
+.navbar a.active {
+    background-color: #555;
+}
+
+/* Content Section */
+.content {
+    padding: 20px;
+}
+
+/* Sample Styling for the Content Sections (adjust as needed) */
+.home-section {
+    background-color: #f9f9f9;
+}
+
+.about-section {
+    background-color: #e0e0e0;
+}
+
+.news-section {
+    background-color: #d3d3d3;
+}
+
+.features-section {
+    background-color: #c0c0c0;
+}
