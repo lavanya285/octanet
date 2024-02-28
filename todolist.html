@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> To-Do List</title>
+<style>
+    body {
+        font-family: system-ui, -apple-system,sans-serif;
+        background-image: url('rc.jpg');
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    .task-form {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+    .task-form input[type="text"],
+    .task-form input[type="date"],
+    .task-form select {
+        width: 200px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-right: 10px;
+    }
+    .task-form button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .task-form button:hover {
+        background-color: #0056b3;
+    }
+    .task-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .task {
+        background-color: #fff;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+    }
+    .task.completed {
+        background-color: #f0f0f0;
+    }
+    .task label {
+        margin-right: 10px;
+    }
+    .task input[type="checkbox"] {
+        margin-right: 10px;
+    }
+    .task span {
+        margin-right: 5px;
+    }
+    .task span:last-child {
+        margin-right: 0;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>To-Do List</h2>
+    <div class="task-form">
+        <input type="text" id="task-name" placeholder="Task Name">
+        <input type="date" id="task-deadline">
+        <select id="task-priority">
+            <option value="high">High Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="low">Low Priority</option>
+        </select>
+        <input type="text" id="task-label" placeholder="Task Label">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+    <ul class="task-list" id="task-list"></ul>
+</div>
+
+<script>
+    function addTask() {
+        var name = document.getElementById("task-name").value;
+        var deadline = document.getElementById("task-deadline").value;
+        var priority = document.getElementById("task-priority").value;
+        var label = document.getElementById("task-label").value;
+
+        if (name.trim() !== "") {
+            var task = {
+                name: name,
+                deadline: deadline,
+                priority: priority,
+                label: label,
+                completed: false
+            };
+
+            displayTask(task);
+        } else {
+            alert("Please enter a task name.");
+        }
+    }
+
+    function displayTask(task) {
+        var list = document.getElementById("task-list");
+        var item = document.createElement("li");
+        item.classList.add("task");
+
+        if (task.completed) {
+            item.classList.add("completed");
+        }
+
+        item.innerHTML = `
+            <input type="checkbox" onchange="toggleTaskCompletion(this)">
+            <label>${task.name}</label>
+            <span>${task.deadline}</span>
+            <span>${task.priority}</span>
+            <span>${task.label}</span>
+        `;
+        list.appendChild(item);
+    }
+
+    function toggleTaskCompletion(checkbox) {
+        var task = checkbox.parentElement;
+        task.classList.toggle("completed");
+    }
+</script>
+
+</body>
+</html>
+
+
